@@ -8,8 +8,7 @@
 <link href="{{ asset('vendor/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css"/> 
 <link href="{{ asset('css/bootstrap.splash.css') }}" rel="stylesheet" type="text/css"/> 
 <link href="{{ asset('css/splash.css') }}" rel="stylesheet" type="text/css"/>   
--->  
-
+-->     
 <!--
 <link href="{{ asset('images/apple-touch-icon-114x114-precomposed.png') }}" rel="apple-touch-icon-precomposed" sizes="114x114">
 <link href="{{ asset('images/apple-touch-icon-72x72-precomposed.png') }}" rel="apple-touch-icon-precomposed" sizes="72x72">
@@ -19,6 +18,7 @@
 
 <script src="{{ asset('js/simpleexpand.js') }}" type="text/javascript"></script>
 <script src="{{ asset('js/valign.js') }}" type="text/javascript"></script>
+<script src="{{ asset('js/bootstrap.min.js') }}" type="text/javascript"></script>
 
 <style>
   .hero {
@@ -41,6 +41,9 @@
   }
  .hero-faq {
     background-image: url({{ asset('/images/hero-bg-faq.jpg') }});
+  }   
+  .hero-testi {
+    background-image: url({{ asset('/images/hero-bg-testi.jpg') }});
   }   
 </style>
 
@@ -93,19 +96,45 @@
     return false;
   }
 </script>
-
-<div class="navbar" style="margin-bottom:0px">
+<div class="navbar-top navbar hidden-phone" style="margin-bottom:0px">
   <div class="container">
     <div class="navbar-inner">
-      <a class="brand" href="https://www.invoiceninja.com/"><img src="{{ asset('images/invoiceninja-logo.png') }}"></a>
-      <ul class="navbar-list">
-        <li>{{ link_to('https://www.invoiceninja.com/features', 'Features' ) }}</li>
-        <!-- <li>{{ link_to('https://www.invoiceninja.com/faq', 'FAQ' ) }}</li> -->
+      <ul>
         <li>{{ link_to('https://www.invoiceninja.com/about', 'About Us' ) }}</li>
-        <li>{{ link_to('https://www.invoiceninja.com/plans', 'Plans' ) }}</li>
         <li>{{ link_to('https://www.invoiceninja.com/contact', 'Contact Us' ) }}</li>
-        <li>{{ link_to('http://blog.invoiceninja.com', 'Blog' ) }}</li>
-        <li>{{ link_to('login', Auth::check() ? 'My Account' : 'Login' ) }}</li>
+        <li>{{ link_to('http://blog.invoiceninja.com', 'Blog' ) }}&nbsp;&nbsp;</li>
+            <li><a href="https://www.facebook.com/invoiceninja" target="_blank"><span class="socicon">b</span></a></li>
+            <li><a href="https://twitter.com/invoiceninja" target="_blank"><span class="socicon">a</span></a></li>
+            <li><a href="https://www.linkedin.com/company/invoice-ninja" target="_blank"><span class="socicon">j</span></a></li>
+            <li><a href="https://plus.google.com/104031016152831072143" target="_blank"><span class="socicon">c</span></a></li>
+            <li><a href="https://github.com/hillelcoren/invoice-ninja" target="_blank"><span class="socicon">Q</span></a></li>
+            <li><a href="https://www.pinterest.com/invoiceninja" target="_blank"><span class="socicon">d</span></a></li>
+            <li><a href="http://blog.invoiceninja.com/feed/rss2" target="_blank"><span class="socicon">,</span></a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="navbar" style="margin-bottom:0px">
+  <div class="container">
+      <div class="navbar-header">
+                    <a class="navbar-brand" href="https://www.invoiceninja.com/"><img src="{{ asset('images/invoiceninja-logo.png') }}"></a>
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>        </div>
+    <div class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li class="hidden-desktop">{{ link_to('http://blog.invoiceninja.com', 'Blog' ) }}</li>
+        <li class="hidden-desktop">{{ link_to('https://www.invoiceninja.com/about', 'About Us' ) }}</li>
+        <li class="hidden-desktop">{{ link_to('https://www.invoiceninja.com/contact', 'Contact Us' ) }}</li>  
+        <li>{{ link_to('https://www.invoiceninja.com/features', 'Features' ) }}</li>
+        <li>{{ link_to('https://www.invoiceninja.com/plans', 'Plans' ) }}</li>
+        <li>{{ link_to('https://www.invoiceninja.com/testimonials', 'Testimonials' ) }}</li>
+        <li>{{ link_to('https://www.invoiceninja.com/faq', 'FAQ' ) }}</li>
+        <li><span class="glyphicon glyphicon-user"></span>      
+          {{ link_to('login', Auth::check() ? 'My Account' : 'Login' ) }}</li>
       </ul>
     </div>
   </div>
@@ -180,14 +209,6 @@
         </ul>
       </div> 
 
-
-
-
-
-
-
-
-
       <div class="col-md-4">
         <h3><span class="glyphicon glyphicon-share-alt"></span>Connect with Us</h3>
         <div class="social">
@@ -200,7 +221,7 @@
           <div class="row2">
             <a href="https://github.com/hillelcoren/invoice-ninja" target="_blank"><img src="{{ asset('images/hex-github.png') }}"></a>
             <a href="https://www.pinterest.com/invoiceninja" target="_blank"><img src="{{ asset('images/hex-pinterest.png') }}"></a>
-            <a href="http://blog.invoiceninja.com/feed/rss2" target="_blank"><img src="{{ asset('images/hex-rss.png') }}"></a>            
+            <a href="http://feeds.feedburner.com/invoiceninja" target="_blank"><img src="{{ asset('images/hex-rss.png') }}"></a>            
           </div>
         </div>
         <!--<h3><span class="glyphicon glyphicon-envelope"></span>Join Our Free Newsletter</h3>-->
@@ -456,11 +477,13 @@
  });
 </script>
 
+<!--
 <script type="text/javascript">
      jQuery(document).ready(function($) {   
    $('.expander').simpleexpand();
  });
 </script>
+-->
 
 <!--
 All images in the site need to have retina versions otherwise the log fills up with requests for missing files
